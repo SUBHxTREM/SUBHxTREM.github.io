@@ -1,0 +1,33 @@
+body{
+background:url("bg.jpg");
+background-size:cover;
+font-family:Arial;
+text-align:center;
+}
+
+.container{
+margin-top:100px;
+}
+
+.profile{
+width:120px;
+border-radius:50%;
+}
+
+.btn{
+display:block;
+width:300px;
+margin:20px auto;
+padding:15px;
+background:white;
+border-radius:30px;
+text-decoration:none;
+color:black;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0px 0px 20px black;
+}
