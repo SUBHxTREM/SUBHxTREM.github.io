@@ -1,33 +1,156 @@
-body{
-background:url("bg.jpg");
-background-size:cover;
-font-family:Arial;
-text-align:center;
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-.container{
-margin-top:100px;
+body {
+    /* Deep dark red/black background to make the fire pop */
+    background: radial-gradient(circle at center, #2a0000 0%, #050000 100%);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-.profile{
-width:120px;
-border-radius:50%;
+/* Particle Embers Background */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
-.btn{
-display:block;
-width:300px;
-margin:20px auto;
-padding:15px;
-background:white;
-border-radius:30px;
-text-decoration:none;
-color:black;
-font-weight:bold;
-transition:0.3s;
+/* Main Content Container */
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 450px;
+    padding: 40px 20px;
+    background: rgba(20, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 69, 0, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+    z-index: 1;
 }
 
-.btn:hover{
-transform:scale(1.05);
-box-shadow:0px 0px 20px black;
+/* Fiery Name Styling */
+.name {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    /* Fire Gradient Text */
+    background: linear-gradient(to top, #ff0000, #ff8c00, #ffcc00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 0px 10px rgba(255, 69, 0, 0.3);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.name span {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.name:hover {
+    transform: scale(1.05);
+    text-shadow: 0px 0px 20px rgba(255, 140, 0, 0.8);
+}
+
+/* 2-Line Description */
+.description {
+    font-size: 0.95rem;
+    color: #ffcc99; /* Warm, soft text color */
+    line-height: 1.6;
+    margin-bottom: 25px;
+    padding: 0 10px;
+}
+
+/* Links Container */
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Button Base & Continuous Animations */
+.link-btn {
+    display: flex;
+    align-items: center;
+    background: rgba(40, 0, 0, 0.6);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid #ff4500;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    
+    /* Dual continuous animations: floating + fire glowing */
+    animation: float 4s ease-in-out infinite, firePulse 2s infinite alternate;
+}
+
+/* Stagger the float animation so they look organic */
+.link-btn:nth-child(1) { animation-delay: 0s, 0s; }
+.link-btn:nth-child(2) { animation-delay: 0.3s, 0.2s; }
+.link-btn:nth-child(3) { animation-delay: 0.6s, 0.4s; }
+.link-btn:nth-child(4) { animation-delay: 0.9s, 0.6s; }
+.link-btn:nth-child(5) { animation-delay: 1.2s, 0.8s; }
+.link-btn:nth-child(6) { animation-delay: 1.5s, 1.0s; }
+
+.link-btn i {
+    font-size: 1.5rem;
+    width: 30px;
+    text-align: center;
+    color: #ffaa00; /* Warm icon color */
+    transition: color 0.3s ease;
+}
+
+.link-btn span {
+    flex-grow: 1;
+    text-align: center;
+    padding-right: 30px;
+}
+
+/* Button Hover - Supercharge the fire */
+.link-btn:hover {
+    transform: scale(1.05) translateY(-3px);
+    background: linear-gradient(45deg, #8b0000, #ff4500);
+    border-color: #ffcc00;
+    box-shadow: 0 0 25px #ff4500;
+    animation-play-state: paused; /* Pauses the float/pulse so it stays highlighted */
+}
+
+.link-btn:hover i {
+    color: #ffffff;
+}
+
+/* Keyframes for Continuous Floating */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Keyframes for Continuous Fire Glow */
+@keyframes firePulse {
+    0% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.4), inset 0 0 5px rgba(255, 0, 0, 0.2); }
+    100% { box-shadow: 0 0 15px rgba(255, 140, 0, 0.8), inset 0 0 10px rgba(255, 69, 0, 0.5); }
+}
+
+/* Special Highlight for Portfolio */
+.portfolio-btn {
+    border: 2px solid #ffaa00;
+    margin-bottom: 5px;
 }
